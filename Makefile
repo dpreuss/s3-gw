@@ -23,6 +23,7 @@ DCCMD=docker-compose
 DOCKERCOMPOSE=$(DCCMD) -f tests/docker-compose.yml --env-file .env.dev --project-directory .
 
 BIN=versitygw
+FILESERVERBIN=starfish-fileserver
 
 VERSION := $(shell if test -e VERSION; then cat VERSION; else git describe --abbrev=0 --tags HEAD; fi)
 BUILD := $(shell git rev-parse --short HEAD || echo release-rpm)
@@ -32,11 +33,15 @@ LDFLAGS=-ldflags "-X=main.Build=$(BUILD) -X=main.BuildTime=$(TIME) -X=main.Versi
 
 all: build
 
-build: $(BIN)
+build: $(BIN) $(FILESERVERBIN)
 
 .PHONY: $(BIN)
 $(BIN):
 	$(GOBUILD) $(LDFLAGS) -o $(BIN) cmd/$(BIN)/*.go
+
+.PHONY: $(FILESERVERBIN)
+$(FILESERVERBIN):
+	$(GOBUILD) $(LDFLAGS) -o $(FILESERVERBIN) cmd/$(FILESERVERBIN)/*.go
 
 testbin:
 	$(GOBUILD) $(LDFLAGS) -o $(BIN) -cover -race cmd/$(BIN)/*.go
@@ -61,6 +66,7 @@ clean:
 .PHONY: cleanall
 cleanall: clean
 	rm -f $(BIN)
+	rm -f $(FILESERVERBIN)
 	rm -f versitygw-*.tar
 	rm -f versitygw-*.tar.gz
 

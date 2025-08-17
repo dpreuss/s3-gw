@@ -869,6 +869,20 @@ func TestVersioningDisabled(s *S3Conf) {
 	VersioningDisabled_PutBucketVersioning_not_configured(s)
 }
 
+func TestStarfish(s *S3Conf) {
+	Starfish_ListBuckets_success(s)
+	Starfish_HeadBucket_success(s)
+	Starfish_ListObjects_success(s)
+	Starfish_HeadObject_success(s)
+	Starfish_GetObject_success(s)
+	Starfish_GetObject_file_server_success(s)
+	Starfish_PutBucketAcl_success(s)
+	Starfish_GetBucketAcl_success(s)
+	Starfish_PutBucketPolicy_success(s)
+	Starfish_GetBucketPolicy_not_set(s)
+	Starfish_DeleteBucketPolicy_success(s)
+}
+
 type IntTests map[string]func(s *S3Conf) error
 
 func GetIntTests() IntTests {
@@ -1349,5 +1363,16 @@ func GetIntTests() IntTests {
 		"Versioning_WORM_obj_version_locked_with_governance_retention":            Versioning_WORM_obj_version_locked_with_governance_retention,
 		"Versioning_WORM_obj_version_locked_with_compliance_retention":            Versioning_WORM_obj_version_locked_with_compliance_retention,
 		"Versioning_concurrent_upload_object":                                     Versioning_concurrent_upload_object,
+		"Starfish_ListBuckets_success":                                            Starfish_ListBuckets_success,
+		"Starfish_HeadBucket_success":                                             Starfish_HeadBucket_success,
+		"Starfish_ListObjects_success":                                            Starfish_ListObjects_success,
+		"Starfish_HeadObject_success":                                             Starfish_HeadObject_success,
+		"Starfish_GetObject_success":                                              Starfish_GetObject_success,
+		"Starfish_GetObject_file_server_success":                                  Starfish_GetObject_file_server_success,
+		"Starfish_PutBucketAcl_success":                                           Starfish_PutBucketAcl_success,
+		"Starfish_GetBucketAcl_success":                                           Starfish_GetBucketAcl_success,
+		"Starfish_PutBucketPolicy_success":                                        Starfish_PutBucketPolicy_success,
+		"Starfish_GetBucketPolicy_not_set":                                        Starfish_GetBucketPolicy_not_set,
+		"Starfish_DeleteBucketPolicy_success":                                     Starfish_DeleteBucketPolicy_success,
 	}
 }

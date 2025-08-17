@@ -24,57 +24,60 @@ var (
 )
 
 var (
-	ActionUndetected                    = "ActionUnDetected"
-	ActionAbortMultipartUpload          = "s3_AbortMultipartUpload"
-	ActionCompleteMultipartUpload       = "s3_CompleteMultipartUpload"
-	ActionCopyObject                    = "s3_CopyObject"
-	ActionCreateBucket                  = "s3_CreateBucket"
-	ActionCreateMultipartUpload         = "s3_CreateMultipartUpload"
-	ActionDeleteBucket                  = "s3_DeleteBucket"
-	ActionDeleteBucketPolicy            = "s3_DeleteBucketPolicy"
-	ActionDeleteBucketTagging           = "s3_DeleteBucketTagging"
-	ActionDeleteObject                  = "s3_DeleteObject"
-	ActionDeleteObjectTagging           = "s3_DeleteObjectTagging"
-	ActionDeleteObjects                 = "s3_DeleteObjects"
-	ActionGetBucketAcl                  = "s3_GetBucketAcl"
-	ActionGetBucketPolicy               = "s3_GetBucketPolicy"
-	ActionGetBucketTagging              = "s3_GetBucketTagging"
-	ActionGetBucketVersioning           = "s3_GetBucketVersioning"
-	ActionGetObject                     = "s3_GetObject"
-	ActionGetObjectAcl                  = "s3_GetObjectAcl"
-	ActionGetObjectAttributes           = "s3_GetObjectAttributes"
-	ActionGetObjectLegalHold            = "s3_GetObjectLegalHold"
-	ActionGetObjectLockConfiguration    = "s3_GetObjectLockConfiguration"
-	ActionGetObjectRetention            = "s3_GetObjectRetention"
-	ActionGetObjectTagging              = "s3_GetObjectTagging"
-	ActionHeadBucket                    = "s3_HeadBucket"
-	ActionHeadObject                    = "s3_HeadObject"
-	ActionListAllMyBuckets              = "s3_ListAllMyBuckets"
-	ActionListMultipartUploads          = "s3_ListMultipartUploads"
-	ActionListObjectVersions            = "s3_ListObjectVersions"
-	ActionListObjects                   = "s3_ListObjects"
-	ActionListObjectsV2                 = "s3_ListObjectsV2"
-	ActionListParts                     = "s3_ListParts"
-	ActionPutBucketAcl                  = "s3_PutBucketAcl"
-	ActionPutBucketPolicy               = "s3_PutBucketPolicy"
-	ActionPutBucketTagging              = "s3_PutBucketTagging"
-	ActionPutBucketVersioning           = "s3_PutBucketVersioning"
-	ActionPutObject                     = "s3_PutObject"
-	ActionPutObjectAcl                  = "s3_PutObjectAcl"
-	ActionPutObjectLegalHold            = "s3_PutObjectLegalHold"
-	ActionPutObjectLockConfiguration    = "s3_PutObjectLockConfiguration"
-	ActionPutObjectRetention            = "s3_PutObjectRetention"
-	ActionPutObjectTagging              = "s3_PutObjectTagging"
-	ActionRestoreObject                 = "s3_RestoreObject"
-	ActionSelectObjectContent           = "s3_SelectObjectContent"
-	ActionUploadPart                    = "s3_UploadPart"
-	ActionUploadPartCopy                = "s3_UploadPartCopy"
-	ActionPutBucketOwnershipControls    = "s3_PutBucketOwnershipControls"
-	ActionGetBucketOwnershipControls    = "s3_GetBucketOwnershipControls"
-	ActionDeleteBucketOwnershipControls = "s3_DeleteBucketOwnershipControls"
-	ActionPutBucketCors                 = "s3_PutBucketCors"
-	ActionGetBucketCors                 = "s3_GetBucketCors"
-	ActionDeleteBucketCors              = "s3_DeleteBucketCors"
+	ActionUndetected                 = "ActionUnDetected"
+	ActionAbortMultipartUpload       = "s3_AbortMultipartUpload"
+	ActionCompleteMultipartUpload    = "s3_CompleteMultipartUpload"
+	ActionCopyObject                 = "s3_CopyObject"
+	ActionCreateBucket               = "s3_CreateBucket"
+	ActionCreateMultipartUpload      = "s3_CreateMultipartUpload"
+	ActionDeleteBucket               = "s3_DeleteBucket"
+	ActionDeleteBucketPolicy         = "s3_DeleteBucketPolicy"
+	ActionDeleteBucketTagging        = "s3_DeleteBucketTagging"
+	ActionDeleteObject               = "s3_DeleteObject"
+	ActionDeleteObjectTagging        = "s3_DeleteObjectTagging"
+	ActionDeleteObjects              = "s3_DeleteObjects"
+	ActionGetBucketAcl               = "s3_GetBucketAcl"
+	ActionGetBucketPolicy            = "s3_GetBucketPolicy"
+	ActionGetBucketTagging           = "s3_GetBucketTagging"
+	ActionGetBucketVersioning        = "s3_GetBucketVersioning"
+	ActionGetObject                  = "s3_GetObject"
+	ActionGetObjectAcl               = "s3_GetObjectAcl"
+	ActionGetObjectAttributes        = "s3_GetObjectAttributes"
+	ActionGetObjectLegalHold         = "s3_GetObjectLegalHold"
+	ActionGetObjectLockConfiguration = "s3_GetObjectLockConfiguration"
+	ActionGetObjectRetention         = "s3_GetObjectRetention"
+	ActionGetObjectTagging           = "s3_GetObjectTagging"
+	ActionGetPublicAccessBlock       = "s3_GetPublicAccessBlock"
+	ActionHeadBucket                 = "s3_HeadBucket"
+	ActionHeadObject                 = "s3_HeadObject"
+	ActionListBuckets                = "s3_ListBuckets"
+	ActionListMultipartUploads       = "s3_ListMultipartUploads"
+	ActionListObjectVersions         = "s3_ListObjectVersions"
+	ActionListObjects                = "s3_ListObjects"
+	ActionListObjectsV2              = "s3_ListObjectsV2"
+	ActionListParts                  = "s3_ListParts"
+	ActionPutBucketAcl               = "s3_PutBucketAcl"
+	ActionPutBucketPolicy            = "s3_PutBucketPolicy"
+	ActionPutBucketTagging           = "s3_PutBucketTagging"
+	ActionPutBucketVersioning        = "s3_PutBucketVersioning"
+	ActionPutObject                  = "s3_PutObject"
+	ActionPutObjectAcl               = "s3_PutObjectAcl"
+	ActionPutObjectLegalHold         = "s3_PutObjectLegalHold"
+	ActionPutObjectLockConfiguration = "s3_PutObjectLockConfiguration"
+	ActionPutObjectRetention         = "s3_PutObjectRetention"
+	ActionPutObjectTagging           = "s3_PutObjectTagging"
+	ActionPutPublicAccessBlock       = "s3_PutPublicAccessBlock"
+	ActionRestoreObject              = "s3_RestoreObject"
+	ActionSelectObjectContent        = "s3_SelectObjectContent"
+	ActionUploadPart                 = "s3_UploadPart"
+	ActionUploadPartCopy             = "s3_UploadPartCopy"
+
+	// Starfish-specific actions
+	ActionStarfishQuery               = "starfish_Query"
+	ActionStarfishCollectionDiscovery = "starfish_CollectionDiscovery"
+	ActionStarfishCacheHit            = "starfish_CacheHit"
+	ActionStarfishCacheMiss           = "starfish_CacheMiss"
+	ActionStarfishFileServerRequest   = "starfish_FileServerRequest"
 
 	// Admin actions
 	ActionAdminCreateUser        = "admin_CreateUser"
@@ -181,6 +184,10 @@ func init() {
 		Name:    "GetObjectTagging",
 		Service: "s3",
 	}
+	ActionMap[ActionGetPublicAccessBlock] = Action{
+		Name:    "GetPublicAccessBlock",
+		Service: "s3",
+	}
 	ActionMap[ActionHeadBucket] = Action{
 		Name:    "HeadBucket",
 		Service: "s3",
@@ -189,8 +196,8 @@ func init() {
 		Name:    "HeadObject",
 		Service: "s3",
 	}
-	ActionMap[ActionListAllMyBuckets] = Action{
-		Name:    "ListAllMyBuckets",
+	ActionMap[ActionListBuckets] = Action{
+		Name:    "ListBuckets",
 		Service: "s3",
 	}
 	ActionMap[ActionListMultipartUploads] = Action{
@@ -253,6 +260,10 @@ func init() {
 		Name:    "PutObjectTagging",
 		Service: "s3",
 	}
+	ActionMap[ActionPutPublicAccessBlock] = Action{
+		Name:    "PutPublicAccessBlock",
+		Service: "s3",
+	}
 	ActionMap[ActionRestoreObject] = Action{
 		Name:    "RestoreObject",
 		Service: "s3",
@@ -269,16 +280,24 @@ func init() {
 		Name:    "UploadPartCopy",
 		Service: "s3",
 	}
-	ActionMap[ActionPutBucketCors] = Action{
-		Name:    "PutBucketCors",
-		Service: "s3",
+	ActionMap[ActionStarfishQuery] = Action{
+		Name:    "StarfishQuery",
+		Service: "starfish",
 	}
-	ActionMap[ActionGetBucketCors] = Action{
-		Name:    "GetBucketCors",
-		Service: "s3",
+	ActionMap[ActionStarfishCollectionDiscovery] = Action{
+		Name:    "StarfishCollectionDiscovery",
+		Service: "starfish",
 	}
-	ActionMap[ActionDeleteBucketCors] = Action{
-		Name:    "DeleteBucketCors",
-		Service: "s3",
+	ActionMap[ActionStarfishCacheHit] = Action{
+		Name:    "StarfishCacheHit",
+		Service: "starfish",
+	}
+	ActionMap[ActionStarfishCacheMiss] = Action{
+		Name:    "StarfishCacheMiss",
+		Service: "starfish",
+	}
+	ActionMap[ActionStarfishFileServerRequest] = Action{
+		Name:    "StarfishFileServerRequest",
+		Service: "starfish",
 	}
 }

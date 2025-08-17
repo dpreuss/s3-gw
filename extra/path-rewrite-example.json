@@ -1,0 +1,95 @@
+{
+  "rules": [
+    {
+      "bucket": "*",
+      "pattern": "^(.*)$",
+      "template": "{{getModifyTimeFormatted .Entry \"2006/01/02\"}}/{{.Entry.Filename}}",
+      "priority": 100,
+      "description": "Default time-based organization for all buckets"
+    },
+    {
+      "bucket": "Archive-US",
+      "pattern": "^(.*)$",
+      "template": "{{getModifyTimeFormatted .Entry \"01/02/2006\"}}/{{.Entry.Filename}}",
+      "priority": 200,
+      "description": "US date format (MM/DD/YYYY) for Archive-US bucket"
+    },
+    {
+      "bucket": "Archive-EU",
+      "pattern": "^(.*)$",
+      "template": "{{getModifyTimeFormatted .Entry \"02/01/2006\"}}/{{.Entry.Filename}}",
+      "priority": 200,
+      "description": "EU date format (DD/MM/YYYY) for Archive-EU bucket"
+    },
+    {
+      "bucket": "Tagged-Data",
+      "pattern": "^(.*)$",
+      "template": "{{join (getTagsExplicit .Entry) \"/\"}}/{{.Entry.Filename}}",
+      "priority": 300,
+      "description": "Organize by explicit tags"
+    },
+    {
+      "bucket": "Large-Files",
+      "pattern": "^(.*)$",
+      "template": "{{getSizeFormatted .Entry \"gb\"}}GB/{{.Entry.Filename}}",
+      "priority": 400,
+      "description": "Organize by file size in GB"
+    },
+    {
+      "bucket": "User-Data",
+      "pattern": "^(.*)$",
+      "template": "user_{{.Entry.UID}}/{{getModifyTimeFormatted .Entry \"2006/01\"}}/{{.Entry.Filename}}",
+      "priority": 500,
+      "description": "Organize by user ID and month"
+    },
+    {
+      "bucket": "Volume-Data",
+      "pattern": "^(.*)$",
+      "template": "{{.Entry.Volume}}/{{getModifyTimeFormatted .Entry \"2006/01/02\"}}/{{.Entry.Filename}}",
+      "priority": 600,
+      "description": "Organize by volume and date"
+    },
+    {
+      "bucket": "Complex-Org",
+      "pattern": "^(.*)$",
+      "template": "{{.Entry.Volume}}/{{getModifyTimeFormatted .Entry \"2006\"}}/{{getModifyTimeFormatted .Entry \"01\"}}/{{.Entry.UID}}/{{getFilenameWithoutExt .Entry}}_{{getSizeFormatted .Entry \"mb\"}}MB{{getExtension .Entry}}",
+      "priority": 700,
+      "description": "Complex organization with volume, year, month, user, and size"
+    },
+    {
+      "bucket": "Recently-Accessed",
+      "pattern": "^(.*)$",
+      "template": "{{getAccessTimeFormatted .Entry \"2006/01/02\"}}/{{.Entry.Filename}}",
+      "priority": 800,
+      "description": "Organize by access time instead of modification time"
+    },
+    {
+      "bucket": "By-Extension",
+      "pattern": "^(.*)$",
+      "template": "{{getExtension .Entry | lower}}/{{getModifyTimeFormatted .Entry \"2006\"}}/{{.Entry.Filename}}",
+      "priority": 900,
+      "description": "Organize by file extension and year"
+    },
+    {
+      "bucket": "Multi-Tagged",
+      "pattern": "^(.*)$",
+      "template": "{{join (getAllTags .Entry) \"-\"}}/{{getModifyTimeFormatted .Entry \"2006/01/02\"}}/{{.Entry.Filename}}",
+      "priority": 1000,
+      "description": "Organize by all tags (explicit and inherited) joined with hyphens"
+    },
+    {
+      "bucket": "Size-Based",
+      "pattern": "^(.*)$",
+      "template": "{{if (gt .Entry.Size 1073741824)}}large{{else if (gt .Entry.Size 104857600)}}medium{{else}}small{{end}}/{{getModifyTimeFormatted .Entry \"2006/01\"}}/{{.Entry.Filename}}",
+      "priority": 1100,
+      "description": "Organize by size categories (large > 1GB, medium > 100MB, small < 100MB)"
+    },
+    {
+      "bucket": "Conditional",
+      "pattern": "^(.*)$",
+      "template": "{{default (first (getTagsExplicit .Entry)) \"untagged\"}}/{{getModifyTimeFormatted .Entry \"2006/01/02\"}}/{{.Entry.Filename}}",
+      "priority": 1200,
+      "description": "Use first tag or 'untagged' if no tags exist"
+    }
+  ]
+} 
